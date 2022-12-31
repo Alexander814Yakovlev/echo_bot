@@ -41,7 +41,10 @@ async def send_location_echo(message: types.Message):
 @dp.message_handler(content_types=['contact'])
 async def send_contact(message: types.Message):
     await message.answer_contact(message.contact.phone_number, message.contact.first_name)
-    print(message.answer_contact)
+
+@dp.message_handler(content_types=['voice'])
+async def send_voice_msg(message: types.Message):
+    await message.answer_voice(message.voice.file_id)
 
 @dp.message_handler()
 async def send_echo(message: types.Message):
