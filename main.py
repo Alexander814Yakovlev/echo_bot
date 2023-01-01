@@ -22,6 +22,10 @@ async def send_photo_echo(message: types.Message):
 async def send_sticker_echo(message: types.Message):
     await message.answer_sticker(message.sticker.file_id)
 
+@dp.message_handler(content_types=['animation'])
+async def send_gif_echo(message: types.Message):
+    await message.answer_animation(message.animation.file_id)
+
 @dp.message_handler(content_types=['video'])
 async def send_video_echo(message: types.Message):
     await message.answer_video(message.video.file_id)
